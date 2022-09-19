@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doit-scheduler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: doit-scheduler
+  template:
+    metadata:
+      labels:
+        app: doit-scheduler
+    spec:
+      containers:
+        - image: doittemp.azurecr.io/doit-scheduler-on-k8s
+          name: doit-scheduler
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+              protocol: TCP
+      imagePullSecrets:
+        - name: regcred
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: doit-scheduler
+spec:
+  selector:
+    app: doit-scheduler
+  ports:
+    - port: 8000
