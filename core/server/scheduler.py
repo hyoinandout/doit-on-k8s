@@ -41,15 +41,14 @@ def read_all_atoms(db: Session = Depends(get_db)):
 def create_atom(atom: schemas.Atom, db: Session = Depends(get_db)):
     db_atom = crud.create_atom(db, atom)
     json_compatible_atom_data = jsonable_encoder(atom)
-    print(json_compatible_atom_data)
-    print(json.dumps(json_compatible_atom_data))
+    json_bytes = json.dumps(json_compatible_atom_data).encode()
     write_yaml(
         atom_id=atom.atom_id,
         name=atom.name,
         cpu=atom.requirements.cpu,
         mem=atom.requirements.mem,
         priority=atom.priority,
-        serialized=json.dumps(json_compatible_atom_data),
+        serialized=str(json_bytes)[0] + str(json_bytes)[2:-1],
     )
     # here I need to pass serialized atom data in form of string type rather than dict
     if apply_yaml():

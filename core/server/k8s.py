@@ -27,7 +27,7 @@ spec:
   restartPolicy: OnFailure
   containers:
   - name: "executor"
-    image: doittemp.azurecr.io/executor-on-k8s
+    image: doittemp.azurecr.io/executor-image
     command: ['python3', 'executor.py', '{serialized}']
     resources:
       requests:

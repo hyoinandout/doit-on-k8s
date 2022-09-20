@@ -31,4 +31,4 @@ if __name__ == "__main__":
 
     my_atom1 = MyAtom(priority=123, cpu=250, mem=64)
     bstring = encode_whole_json(my_atom1.__dict__)
-    print(json.dumps(bstring.decode(encoding="utf-8")))
+    print(bstring)
