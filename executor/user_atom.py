@@ -1,21 +1,11 @@
 from atom import Atom, Requirements
+import time
 
 
 class MyAtom(Atom):
-    def __init__(
-        self,
-        priority: int,
-        cpu: int,
-        mem: int,
-        name: str,
-    ):
-        self.priority = priority
-        self.requirements = Requirements(cpu, mem)
-        self.name = name
-        self._id()
-
     def execute(self):
         print("Hello World")
+        time.sleep(45)
 
 
 # print(path.dirname(path.dirname(path.abspath(__file__))))

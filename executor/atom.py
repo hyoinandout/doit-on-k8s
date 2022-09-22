@@ -1,19 +1,26 @@
-import abc
-
 class Requirements:
     def __init__(self, cpu: int, mem: int):
         self.cpu = cpu
         self.mem = mem
 
 
-class Atom(metaclass=abc.ABCMeta):
+class Atom:
     atom_id: str
     priority: int
     requirements: Requirements
     name: str
 
+    def __init__(self, priority: int, cpu: int, mem: int):
+        self.priority = priority
+        self.requirements = Requirements(cpu, mem)
+        self.atom_id = self._id()
+
+    @property
+    def name(self):
+        return f"{self.__class__.__module__}.{self.__class__.__name__}"
+
     def _id(self):
-        self.atom_id = str(
+        return str(
             str(self.priority)
             + "-"
             + str(self.requirements.cpu)
@@ -22,7 +29,3 @@ class Atom(metaclass=abc.ABCMeta):
             + "-"
             + str(self.name)
         )
-
-    @abc.abstractmethod
-    def execute(self):
-        pass
