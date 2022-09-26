@@ -3,3 +3,4 @@ pydantic
 uvicorn
 kubernetes
 sqlalchemy
+requests

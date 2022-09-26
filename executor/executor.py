@@ -4,6 +4,8 @@ import importlib
 import sys
 import requests
 
+sys.path.append("/code/app")
+
 # json_bytes = bytes(input(), encoding="utf-8")
 # serialized = json.loads(json_bytes.decode("utf-8"))
 json_bytes = eval(sys.argv[1][0] + "'" + sys.argv[1][1:] + "'")

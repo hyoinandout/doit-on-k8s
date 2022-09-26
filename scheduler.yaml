@@ -13,7 +13,7 @@ spec:
         app: doit-scheduler
     spec:
       containers:
-        - image: doittemp.azurecr.io/doit-scheduler-image
+        - image: doittemp.azurecr.io/doit-on-k8s
           name: doit-scheduler
           imagePullPolicy: IfNotPresent
           ports:

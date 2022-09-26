@@ -12,7 +12,7 @@ class Atom:
     atom_id: str
     priority: int
     requirements: Requirements
-    name: str  # 부모 클래스에서 아톰 이름을 정해줘야함
+    name: str
 
     def __init__(self, priority: int, cpu: int, mem: int):
         self.priority = priority

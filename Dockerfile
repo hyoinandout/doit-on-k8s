@@ -12,4 +12,4 @@ COPY . /code/app
 
 WORKDIR /code/app
 
-ENTRYPOINT [ "python3", "executor.py" ]
+CMD ["uvicorn", "core.server.scheduler:app", "--host", "0.0.0.0", "--port", "8000"]

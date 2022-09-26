@@ -27,8 +27,8 @@ spec:
   restartPolicy: OnFailure
   containers:
   - name: "executor"
-    image: doittemp.azurecr.io/executor-image
-    command: ['python3', 'executor.py', '{serialized}']
+    image: doittemp.azurecr.io/doit-on-k8s
+    command: ['python3', './executor/executor.py', '{serialized}']
     resources:
       requests:
         memory: "{mem}Mi"
